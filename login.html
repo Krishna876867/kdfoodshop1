@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="Description" content="Enter your description here" />
+  <title>Foodies</title>
+  <link rel="stylesheet" href="/style2.css">
+</head>
+
+<body>
+<div class="form">
+
+    <div class="buttons">
+        <label for="chbox" class="login btn"><span>Login</span></label>
+        <label for="chbox" class="SignUp btn"><span>SignUp</span></label>
+    </div>
+
+    <input type="checkbox" id="chbox">	
+    <div class="layer"></div>
+    <div class="layer2"></div>
+    <div class="login_form">
+        <br><input type="text" id="user_name" placeholder="Username"><br>
+        <input type="password" id="user_pass" placeholder="password"><br>
+        <input type="button" onclick="signIn()" value="Submit" />
+        <hr>
+    
+       
+    </div>
+
+    <div class="SignUp_form">
+        <br><input type="text" placeholder="Name"><br>
+        <input type="text"  id="user_name" for="user_name" placeholder="Username"><br>
+        <input type="email" placeholder="E-Mail"><br>
+        <input type="password" id="user_pass" for="user_pass"  placeholder="password"><br>
+        <input  type="button" onclick="signUp()" value="Submit" />
+
+        <hr>
+    
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    function signUp(){
+
+    const userData = {
+   
+        user_name:document.getElementById('user_name').value,
+        user_pass:document.getElementById('user_pass').value,
+        
+    };
+    window.location.href = "login.html";
+    localStorage.setItem("user_data", JSON.stringify(userData));
+    
+    }
+</script>
+<script >
+
+    function getData(){
+        let user_data =   JSON.parse(localStorage.getItem("user_data"));
+        return user_data;
+    }
+    //  var data = getData();
+    //  console.log(data);
+  
+  function signIn(){
+  
+       let data = getData();
+  
+       let user_name = document.getElementById('user_name').value;
+       let user_pass = document.getElementById('user_pass').value;
+       
+     
+        if (data.user_name == user_name && data.user_pass == user_pass)
+        {
+        window.location.href = "index.html";
+            alert("login success");
+           
+       } else {
+         alert("login fail");
+       }
+     }
+      </script>
+</body>
+</html>
